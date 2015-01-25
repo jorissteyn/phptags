@@ -1,0 +1,22 @@
+{
+    "name": "jorissteyn/phptags",
+    "homepage": "https://github.com/jorissteyn/phptags",
+    "description": "Source code tagging system for PHP source files",
+    "keywords": ["php", "global", "gtags", "emacs", "ctags"],
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "authors": [{
+        "name": "Joris Steyn",
+        "email": "jorissteyn@gmail.com"
+    }],
+    "require": {
+        "php": ">=5.3",
+        "nikic/php-parser": "~1.1",
+        "nategood/commando": "~0.2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpTags\\": "src/"
+        }
+    }
+}
