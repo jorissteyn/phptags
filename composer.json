@@ -1,10 +1,10 @@
 {
     "name": "jorissteyn/phptags",
     "homepage": "https://github.com/jorissteyn/phptags",
-    "description": "Source code tagging system for PHP source files",
+    "description": "A PHP source code tagging system",
     "keywords": ["php", "global", "gtags", "emacs", "ctags"],
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "AGPLv3",
     "authors": [{
         "name": "Joris Steyn",
         "email": "jorissteyn@gmail.com"
