@@ -1,9 +1,11 @@
 #!/usr/bin/env php
 <?php
 
-require_once implode(DIRECTORY_SEPARATOR, array(
-    __DIR__, '..', 'vendor', 'autoload.php'
-));
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
+} else {
+    require_once __DIR__ . '/../../../autoload.php';
+}
 
 use Commando\Command as CommandOptions;
 use PhpTags\Database;
