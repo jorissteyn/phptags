@@ -42,13 +42,13 @@ $ phptags index --pattern `\.(php|inc|module|profile|install)$`
 # Usage: query
 The command `phptags query` can be used to find tags in the database. It accepts the `--root` and `--database` options, and has several additional options to specify the query.
 
-It searches for definitions only, except when the --references options is given.
+It searches for definitions only, except when the --reference options is given.
 
 ```
 $ phptags query --help
 $ phptags query ^FindThis$
 $ phptags query findthis --type function
-$ phptags query findthis --references
+$ phptags query findthis --reference
 $ phptags query findthis --format ctags
 ```
 
