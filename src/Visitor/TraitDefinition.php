@@ -36,7 +36,7 @@ class TraitDefinition extends ClassDefinition
     /**
      * @param Node $node
      */
-    protected function processNode(Node $node)
+    protected function processNode(Node $node, $type = 'trait')
     {
         parent::processNode($node, 'trait');
     }
