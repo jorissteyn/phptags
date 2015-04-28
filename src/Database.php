@@ -125,18 +125,30 @@ INSERT INTO tags (name, file, tag_type, usage_type, start_line, end_line, start_
 SQL
             );
 
-            $startFilePos = 1 + $tag->getStartFilePos();
-            $endFilePos = $tag->getEndFilePos();
+            $tagData = [
+                'path'           => $filePath,
+                'name'           => $tag->getName(),
+                'tag_type'       => $tag->getTagType(),
+                'usage_type'     => $tag->getUsageType(),
+                'start_line'     => $tag->getStartLine(),
+                'start_file_pos' => $tag->getStartFilePos() + 1,
+                'end_line'       => $tag->getEndLine(),
+                'end_file_pos'   => $tag->getEndFilePos(),
+                'comment'        => $tag->getComment(),
+            ];
 
-            $statement->bindParam(':name', $tag->getName(), SQLITE3_TEXT);
-            $statement->bindParam(':file', $filePath, SQLITE3_TEXT);
-            $statement->bindParam(':tag_type', $tag->getTagType(), SQLITE3_TEXT);
-            $statement->bindParam(':usage_type', $tag->getUsageType(), SQLITE3_TEXT);
-            $statement->bindParam(':start_line', $tag->getStartLine(), SQLITE3_INTEGER);
-            $statement->bindParam(':end_line', $tag->getEndLine(), SQLITE3_INTEGER);
-            $statement->bindParam(':start_file_pos', $startFilePos, SQLITE3_INTEGER);
-            $statement->bindParam(':end_file_pos', $endFilePos, SQLITE3_INTEGER);
-            $statement->bindParam(':comment', $tag->getComment(), SQLITE3_TEXT);
+            $statement->bindParam(':file', $tagData['path'], SQLITE3_TEXT);
+            $statement->bindParam(':name', $tagData['name'], SQLITE3_TEXT);
+            $statement->bindParam(':comment', $tagData['comment'], SQLITE3_TEXT);
+            $statement->bindParam(':tag_type', $tagData['tag_type'], SQLITE3_TEXT);
+            $statement->bindParam(':usage_type', $tagData['usage_type'], SQLITE3_TEXT);
+
+            $statement->bindParam(':end_line', $tagData['end_line'], SQLITE3_INTEGER);
+            $statement->bindParam(':end_file_pos', $tagData['end_file_pos'], SQLITE3_INTEGER);
+
+            $statement->bindParam(':start_line', $tagData['start_line'], SQLITE3_INTEGER);
+            $statement->bindParam(':start_file_pos', $tagData['start_file_pos'], SQLITE3_INTEGER);
+
             $statement->execute();
         }
 
