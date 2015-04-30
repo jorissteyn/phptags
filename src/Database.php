@@ -204,11 +204,9 @@ SQL;
             $sql .= ' AND tag_type = :tag_type';
         }
 
-        // Escape delimiters.
+        // Add and escape delimiters.
         $pattern = str_replace('#', '\\#', $pattern);   // Escape delimiters.
-
-        // Always match beginning of string.
-        $pattern = sprintf('#^%s#', $pattern);
+        $pattern = sprintf('#%s#', $pattern);
 
         if ($ignoreCase) {
             $pattern .= 'i';
