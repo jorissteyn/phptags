@@ -71,10 +71,10 @@ class IndexCommand
         // Export built-in tags.
         $tags = $this->extensionTags->getTags();
         if ($reporter !== null) {
-            $reporter(
+            $reporter(sprintf(
                 "Importing tags for %d built-in modules...\n",
                 count($tags)
-            );
+            ));
         }
 
         foreach ($tags as $module => $moduleTags) {
@@ -87,6 +87,7 @@ class IndexCommand
             count($this->files)
         ));
 
+        $tagCount = 0;
         foreach ($this->files as $index => $file) {
             try {
               $tags = $this->parser->getTags($file);
