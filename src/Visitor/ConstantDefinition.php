@@ -28,7 +28,7 @@ class ConstantDefinition extends DefinitionVisitor
      */
     public function leaveNode(Node $node)
     {
-        if ($node->getType() === 'Stmt_Const') {
+        if ($node->getType() === 'Const') {
             $this->processNode($node);
         }
     }
@@ -36,7 +36,7 @@ class ConstantDefinition extends DefinitionVisitor
     /**
      * @param Node $node
      */
-    protected function processNode(Node\Stmt\Const_ $node)
+    protected function processNode(Node\Const_ $node)
     {
         $this->createTag('constant', $node->name, $node);
     }
