@@ -66,7 +66,7 @@ class QueryCommand
      */
     public function findByPattern($pattern, $usageType = PhpTags\Tag::DEFINITION, $ignoreCase = true, $tagType = null, $format = null)
     {
-        if ($tagType === '*') {
+        if ($tagType === 'any') {
             $tagType = null;
         }
 
