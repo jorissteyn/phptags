@@ -112,6 +112,10 @@ class Parser
      */
     protected function getContents($filePath)
     {
+        # Ignore the empty symlinks that emacs leaves
+        if (!file_exists($filePath)) {
+            return false;
+        }
         $source = file_get_contents($filePath);
         if ($source === false) {
             throw new \Exception(
